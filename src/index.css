@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Apply body styles directly */
+body {
+  font-family: system-ui, sans-serif; /* instead of @apply font-sans */
+  background-color: #ffffff; /* instead of @apply bg-white */
+  color: #111111; /* instead of @apply text-neutral-900 */
+}
+
+/* Custom scrollbar (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* neutral-400 fallback */
+  border-radius: 9999px;
+}
