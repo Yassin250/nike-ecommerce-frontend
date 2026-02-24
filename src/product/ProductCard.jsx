@@ -64,7 +64,7 @@ export const ProductCard = ({ product, onQuickAdd }) => {
                 {isHovered && (
                     <div className="absolute inset-x-0 bottom-0 p-4 space-y-2 bg-white/90 backdrop-blur-sm">
                         <Link
-                            to={`/products/${product.id}`}
+                            to={`/products/${product._id}`}
                             className="w-full bg-black text-white font-medium py-2.5 text-sm flex items-center justify-center hover:bg-neutral-800 transition-colors"
                         >
                             View Product
