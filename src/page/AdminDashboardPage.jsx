@@ -1,51 +1,84 @@
-import React from 'react';
-import { AdminSidebar } from '../components/admin/AdminSidebar';
+import AdminSidebar from "../admin/AdminSidebar";
+import { useAuth } from "../context/AuthContext.jsx";
+import { Navigate } from 'react-router-dom';
 
-const AdminDashboardPage = () => {
+export default function AdminDashboardPage() {
+    const { user, isAuthenticated, isAdmin } = useAuth();
+
+    // Redirect if not admin
+    if (!isAuthenticated) {
+        return <Navigate to="/account/login" replace />;
+    }
+
+    if (!isAdmin) {
+        return <Navigate to="/" replace />;
+    }
+
     return (
-        <main className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-[220px,1fr] gap-8">
+        <div className="flex min-h-screen bg-gray-50">
             <AdminSidebar />
-            <section className="space-y-6">
-                <header className="flex items-center justify-between">
-                    <div>
-                        <h1 className="text-2xl font-semibold">Overview</h1>
-                        <p className="text-sm text-neutral-600">
-                            High-level performance of your store.
-                        </p>
-                    </div>
-                    <span className="text-xs text-neutral-500 uppercase tracking-wide border border-neutral-200 px-2 py-1 rounded-full">
-                        Production
-                    </span>
-                </header>
-                <div className="grid md:grid-cols-3 gap-4">
-                    <div className="border border-neutral-200 rounded-xl p-4">
-                        <p className="text-xs uppercase text-neutral-500 mb-1">
-                            Revenue (30d)
-                        </p>
-                        <p className="text-xl font-semibold">$120,430</p>
-                    </div>
-                    <div className="border border-neutral-200 rounded-xl p-4">
-                        <p className="text-xs uppercase text-neutral-500 mb-1">
-                            Orders (30d)
-                        </p>
-                        <p className="text-xl font-semibold">3,214</p>
-                    </div>
-                    <div className="border border-neutral-200 rounded-xl p-4">
-                        <p className="text-xs uppercase text-neutral-500 mb-1">
-                            Conversion
-                        </p>
-                        <p className="text-xl font-semibold">3.8%</p>
-                    </div>
-                </div>
-                <div className="border border-neutral-200 rounded-xl p-4">
-                    <h2 className="text-sm font-semibold mb-2">Recent orders</h2>
-                    <p className="text-sm text-neutral-600">
-                        Connect to backend to show live data.
-                    </p>
-                </div>
-            </section>
-        </main>
-    );
-};
 
-export default AdminDashboardPage;
+            <main className="flex-1 p-8">
+                <div className="max-w-7xl mx-auto">
+                    <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
+
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <StatCard
+                            title="Total Products"
+                            value="0"
+                            change="+0%"
+                            positive={true}
+                        />
+                        <StatCard
+                            title="Total Orders"
+                            value="0"
+                            change="+0%"
+                            positive={true}
+                        />
+                        <StatCard
+                            title="Total Users"
+                            value="0"
+                            change="+0%"
+                            positive={true}
+                        />
+                        <StatCard
+                            title="Revenue"
+                            value="₹0"
+                            change="+0%"
+                            positive={true}
+                        />
+                    </div>
+
+                    {/* Welcome Message */}
+                    <div className="bg-white rounded-lg shadow p-6">
+                        <h2 className="text-xl font-semibold mb-2">
+                            Welcome, {user?.name}!
+                        </h2>
+                        <p className="text-gray-600">
+                            This is your admin dashboard. Use the sidebar to navigate to different sections.
+                        </p>
+                        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                            <p className="text-sm text-blue-800">
+                                <strong>Note:</strong> Admin features are currently in development.
+                                You can manage products, orders, and users through Postman for now.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    );
+}
+
+function StatCard({ title, value, change, positive }) {
+    return (
+        <div className="bg-white rounded-lg shadow p-6">
+            <p className="text-sm text-gray-600 mb-1">{title}</p>
+            <p className="text-3xl font-bold mb-2">{value}</p>
+            <p className={`text-sm ${positive ? 'text-green-600' : 'text-red-600'}`}>
+                {change} from last month
+            </p>
+        </div>
+    );
+}
