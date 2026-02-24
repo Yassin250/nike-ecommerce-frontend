@@ -107,7 +107,7 @@ export default function Footer() {
                 <div className="pt-4 border-t border-[#222222]">
                     <div className="flex flex-col md:flex-row justify-between items-center text-xs text-[#7E7E7E]">
                         <div className="flex items-center space-x-4 mb-4 md:mb-0">
-                            <span>© 2026 Nike, Inc. All Rights Reserved</span>
+                            <span>© 2026 NikeDeplux, Inc. All Rights Reserved</span>
                         </div>
                         <div className="flex items-center space-x-6">
                             <a href="#" className="hover:text-white transition-colors">
