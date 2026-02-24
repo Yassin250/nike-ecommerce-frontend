@@ -1,4 +1,4 @@
-import AdminSidebar from "../admin/AdminSidebar";
+import AdminSidebar from "../admin/adminSidebar.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { Navigate } from 'react-router-dom';
 
