@@ -7,7 +7,7 @@ import {
     BarChart3,
     LogOut
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 export default function AdminSidebar() {
     const location = useLocation();
