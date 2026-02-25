@@ -21,7 +21,7 @@ export default function ProfilePage() {
     const [ordersLoading, setOrdersLoading] = useState(false);
     const [addresses, setAddresses] = useState([]);
     const [addressesLoading, setAddressesLoading] = useState(false);
-    const [wishlist, setWishlist] = useState([]);
+    //const [wishlist, setWishlist] = useState([]);
     const [updating, setUpdating] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
@@ -362,7 +362,7 @@ export default function ProfilePage() {
                                         <div className="bg-white rounded-lg p-6">
                                             <Heart className="w-8 h-8 mb-3 text-black" />
                                             <h3 className="text-3xl font-bold mb-1">
-                                                {wishlist.length || 0}
+                                                0  {/* Wishlist coming soon */}
                                             </h3>
                                             <p className="text-sm text-[#757575]">Wishlist Items</p>
                                         </div>
