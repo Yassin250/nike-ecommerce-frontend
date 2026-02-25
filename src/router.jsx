@@ -12,6 +12,10 @@ const LoginPage = lazy(() => import('./page/LoginPage'));
 const RegisterPage = lazy(() => import('./page/RegisterPage'));
 const ProfilePage = lazy(() => import('./page/ProfilePage'));
 const AdminDashboardPage = lazy(() => import('./page/AdminDashboardPage'));
+const AdminProductsPage = lazy(() => import('./page/AdminProductsPage'));
+const AdminOrdersPage = lazy(() => import('./page/AdminOrdersPage'));
+const AdminUsersPage = lazy(() => import('./page/AdminUsersPage'));
+const AdminAnalyticsPage = lazy(() => import('./page/AdminAnalyticsPage'));
 
 const PageFallback = () => {
     return (
@@ -61,6 +65,10 @@ const AppRouter = () => {
                         <Route path="/account/register" element={<RegisterPage />} />
                         <Route path="/account/profile" element={<ProfilePage />} />
                         <Route path="/admin" element={<AdminDashboardPage />} />
+                        <Route path="/admin/products" element={<AdminProductsPage />} />
+                        <Route path="/admin/orders" element={<AdminOrdersPage />} />
+                        <Route path="/admin/users" element={<AdminUsersPage />} />
+                        <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
                     </Routes>
                 </Suspense>
                 <Footer />

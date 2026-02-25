@@ -122,7 +122,7 @@ export const Navbar = () => {
                                 onClick={() => navigate(ROUTES.LOGIN)}
                                 className="hidden sm:block text-sm font-medium hover:text-black transition-colors"
                             >
-                                Login
+                                <User className="w-6 h-6" />
                             </button>
                         )}
 
