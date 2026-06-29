@@ -63,6 +63,7 @@ class ApiClient {
         const config = {
             ...options,
             headers,
+            credentials: 'include',
         };
 
         // Convert body to JSON if it's an object
